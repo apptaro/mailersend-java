@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.webhooks;
 
+import static java8.CompatUtil.isBlank;
+
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -107,17 +109,17 @@ public class WebhooksBuilder {
         
         builderBody.domainId = domainId;
         
-        if (builderBody.name == null || builderBody.name.isBlank()) {
+        if (builderBody.name == null || isBlank(builderBody.name)) {
             
             throw new MailerSendException("Webhook name cannot be empty");
         }
         
-        if (builderBody.url == null || builderBody.url.isBlank()) {
+        if (builderBody.url == null || isBlank(builderBody.url)) {
             
             throw new MailerSendException("Webhook URL cannot be empty");
         }
         
-        if (domainId == null || domainId.isBlank()) {
+        if (domainId == null || isBlank(domainId)) {
             
             throw new MailerSendException("Domain ID cannot be empty");
         }
@@ -160,7 +162,7 @@ public class WebhooksBuilder {
      */
     public Webhook updateWebhook(String webhookId) throws MailerSendException {
         
-        if (webhookId == null || webhookId.isBlank()) {
+        if (webhookId == null || isBlank(webhookId)) {
             
             throw new MailerSendException("Domain ID cannot be empty");
         }

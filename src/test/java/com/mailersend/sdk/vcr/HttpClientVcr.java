@@ -7,27 +7,29 @@
  **************************************************/
 package com.mailersend.sdk.vcr;
 
+import static java8.CompatUtil.listOf;
+
 import java.io.IOException;
 import java.net.Authenticator;
 import java.net.CookieHandler;
 import java.net.ProxySelector;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandler;
-import java.net.http.HttpResponse.BodySubscriber;
-import java.net.http.HttpResponse.PushPromiseHandler;
 import java.nio.ByteBuffer;
 import java.time.Duration;
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Flow.Subscriber;
-import java.util.concurrent.Flow.Subscription;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLParameters;
+
+import java8.net.http.HttpClient;
+import java8.net.http.HttpRequest;
+import java8.net.http.HttpResponse;
+import java8.net.http.HttpResponse.BodyHandler;
+import java8.net.http.HttpResponse.BodySubscriber;
+import java8.net.http.HttpResponse.PushPromiseHandler;
+import java8.util.concurrent.Flow.Subscriber;
+import java8.util.concurrent.Flow.Subscription;
 
 public class HttpClientVcr extends HttpClient {
 
@@ -130,7 +132,7 @@ public class HttpClientVcr extends HttpClient {
             wrapped.onSubscribe(subscription);
         }
         @Override
-        public void onNext(ByteBuffer item) { wrapped.onNext(List.of(item)); }
+        public void onNext(ByteBuffer item) { wrapped.onNext(listOf(item)); }
         @Override
         public void onError(Throwable throwable) { wrapped.onError(throwable); }
         @Override

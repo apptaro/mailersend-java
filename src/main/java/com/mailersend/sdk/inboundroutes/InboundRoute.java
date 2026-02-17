@@ -1,5 +1,7 @@
 package com.mailersend.sdk.inboundroutes;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -52,7 +54,7 @@ public class InboundRoute {
 	 * <p>postDeserialize.</p>
 	 */
 	public void postDeserialize() {
-		if (dnsCheckedAtString != null && !dnsCheckedAtString.isBlank()) {
+		if (dnsCheckedAtString != null && !isBlank(dnsCheckedAtString)) {
 			
 	        TemporalAccessor ta;
 	        Instant instant;

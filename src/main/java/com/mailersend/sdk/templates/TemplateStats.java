@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.templates;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -64,7 +66,7 @@ public class TemplateStats {
         TemporalAccessor ta;
         Instant instant;
         
-        if (lastEmailSentAtStr != null && !lastEmailSentAtStr.isBlank()) {
+        if (lastEmailSentAtStr != null && !isBlank(lastEmailSentAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(lastEmailSentAtStr);
             instant = Instant.from(ta);

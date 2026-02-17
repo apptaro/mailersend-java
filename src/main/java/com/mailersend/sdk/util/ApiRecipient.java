@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.util;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -53,21 +55,21 @@ public class ApiRecipient {
         TemporalAccessor ta;
         Instant instant;
         
-        if (createdAtString != null && !createdAtString.isBlank()) {
+        if (createdAtString != null && !isBlank(createdAtString)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(createdAtString);
             instant = Instant.from(ta);
             createdAt = Date.from(instant);
         }
         
-        if (updatedAtString != null && !updatedAtString.isBlank()) {
+        if (updatedAtString != null && !isBlank(updatedAtString)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(updatedAtString);
             instant = Instant.from(ta);
             updatedAt = Date.from(instant);
         }
         
-        if (deletedAtString != null && !deletedAtString.isBlank()) {
+        if (deletedAtString != null && !isBlank(deletedAtString)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(deletedAtString);
             instant = Instant.from(ta);

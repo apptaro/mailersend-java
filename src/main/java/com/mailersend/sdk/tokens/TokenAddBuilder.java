@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.tokens;
 
+import static java8.CompatUtil.isBlank;
+
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -110,12 +112,12 @@ public class TokenAddBuilder {
      */
     public TokenAdd addToken() throws MailerSendException {
        
-        if (tokenAddBody.name == null || tokenAddBody.name.isBlank()) {
+        if (tokenAddBody.name == null || isBlank(tokenAddBody.name)) {
             
             throw new MailerSendException("Token name cannot be null or empty");
         }
         
-        if (tokenAddBody.domainId == null || tokenAddBody.domainId.isBlank()) {
+        if (tokenAddBody.domainId == null || isBlank(tokenAddBody.domainId)) {
             
             throw new MailerSendException("Domain ID cannot be null or empty");
         }

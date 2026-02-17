@@ -7,7 +7,7 @@
  **************************************************/
 package com.mailersend.sdk.util;
 
-import java.net.http.HttpClient;
+import java8.net.http.HttpClient;
 
 /**
  * We use a factory for the HttpClient that the SDk uses so that we can switch clients when needed

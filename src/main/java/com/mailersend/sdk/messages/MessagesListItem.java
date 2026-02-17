@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.messages;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -44,14 +46,14 @@ public class MessagesListItem {
         TemporalAccessor ta;
         Instant instant;
         
-        if (createdAtString != null && !createdAtString.isBlank()) {
+        if (createdAtString != null && !isBlank(createdAtString)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(createdAtString);
             instant = Instant.from(ta);
             createdAt = Date.from(instant);
         }
         
-        if (updatedAtString != null && !updatedAtString.isBlank()) {
+        if (updatedAtString != null && !isBlank(updatedAtString)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(updatedAtString);
             instant = Instant.from(ta);

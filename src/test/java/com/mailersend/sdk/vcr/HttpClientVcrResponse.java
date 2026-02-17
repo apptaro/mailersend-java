@@ -8,13 +8,14 @@
 package com.mailersend.sdk.vcr;
 
 import java.net.URI;
-import java.net.http.HttpClient.Version;
-import java.net.http.HttpHeaders;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import java8.net.http.HttpClient.Version;
+import java8.net.http.HttpHeaders;
+import java8.net.http.HttpRequest;
+import java8.net.http.HttpResponse;
 
 public class HttpClientVcrResponse implements HttpResponse<Object> {
 	

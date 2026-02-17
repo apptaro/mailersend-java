@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.sms;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -55,7 +57,7 @@ public class SmsInfo {
 	 * <p>postDeserialize.</p>
 	 */
 	public void postDeserialize() {
-		if (createdAtStr != null && !createdAtStr.isBlank()) {
+		if (createdAtStr != null && !isBlank(createdAtStr)) {
 			
 	        TemporalAccessor ta;
 	        Instant instant;

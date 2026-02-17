@@ -7,14 +7,14 @@
  **************************************************/
 package com.mailersend.sdk.vcr;
 
+import static java8.CompatUtil.pathOf;
+import static java8.CompatUtil.readString;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodySubscribers;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,6 +31,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mailersend.sdk.util.JsonSerializationDeserializationStrategy;
 import com.mailersend.sdk.vcr.HttpClientVcr.StringSubscriber;
+
+import java8.net.http.HttpRequest;
+import java8.net.http.HttpResponse;
+import java8.net.http.HttpResponse.BodySubscriber;
+import java8.net.http.HttpResponse.BodySubscribers;
 
 public class VcrTape {
 
@@ -86,10 +91,10 @@ public class VcrTape {
 	 */
 	public void loadTape(String path) throws IOException {
 		
-		this.tapePath = Path.of(path);
+		this.tapePath = pathOf(path);
 		
 		if (Files.exists(this.tapePath)) {
-			String fixture = Files.readString(this.tapePath);
+			String fixture = readString(this.tapePath);
 	        Gson gson = new GsonBuilder()
 	                .addSerializationExclusionStrategy(new JsonSerializationDeserializationStrategy(false))
 	                .addDeserializationExclusionStrategy(new JsonSerializationDeserializationStrategy(true))
@@ -137,10 +142,10 @@ public class VcrTape {
 		String method = request.method();
 		
 		Optional<String> body = request.bodyPublisher().map(p -> {
-			var bodySubscriber = BodySubscribers.ofString(StandardCharsets.UTF_8);
-			var flowSubscriber = new StringSubscriber(bodySubscriber);
-			p.subscribe(flowSubscriber);
-			return bodySubscriber.getBody().toCompletableFuture().join();
+		    BodySubscriber<String> bodySubscriber = BodySubscribers.ofString(StandardCharsets.UTF_8);
+		    StringSubscriber flowSubscriber = new StringSubscriber(bodySubscriber);
+		    p.subscribe(flowSubscriber);
+		    return bodySubscriber.getBody().toCompletableFuture().join();
 		});
 		
 		StringBuilder stringBuilder = new StringBuilder();

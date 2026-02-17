@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.domains;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -92,14 +94,14 @@ public class Domain extends MailerSendResponse {
         TemporalAccessor ta;
         Instant instant;
         
-        if (createdAtStr != null && !createdAtStr.isBlank()) {
+        if (createdAtStr != null && !isBlank(createdAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(createdAtStr);
             instant = Instant.from(ta);
             createdAt = Date.from(instant);
         }
         
-        if (updatedAtStr != null && !updatedAtStr.isBlank()) {
+        if (updatedAtStr != null && !isBlank(updatedAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(updatedAtStr);
             instant = Instant.from(ta);

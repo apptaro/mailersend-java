@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailsend.sdk.emailverification;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -68,28 +70,28 @@ public class EmailVerificationList {
         TemporalAccessor ta;
         Instant instant;
         
-		if (verificationStartedStr != null && !verificationStartedStr.isBlank()) {
+		if (verificationStartedStr != null && !isBlank(verificationStartedStr)) {
 	        
             ta = DateTimeFormatter.ISO_INSTANT.parse(verificationStartedStr);
             instant = Instant.from(ta);
             verificationStarted = Date.from(instant);
 		}
 		
-		if (verificationEndedStr != null && !verificationEndedStr.isBlank()) {
+		if (verificationEndedStr != null && !isBlank(verificationEndedStr)) {
 	        
             ta = DateTimeFormatter.ISO_INSTANT.parse(verificationEndedStr);
             instant = Instant.from(ta);
             verificationEnded = Date.from(instant);
 		}
         
-        if (createdAtStr != null && !createdAtStr.isBlank()) {
+        if (createdAtStr != null && !isBlank(createdAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(createdAtStr);
             instant = Instant.from(ta);
             createdAt = Date.from(instant);
         }
         
-        if (updatedAtStr != null && !updatedAtStr.isBlank()) {
+        if (updatedAtStr != null && !isBlank(updatedAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(updatedAtStr);
             instant = Instant.from(ta);

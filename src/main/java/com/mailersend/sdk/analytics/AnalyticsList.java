@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.analytics;
 
+import static java8.CompatUtil.isBlank;
+
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
@@ -49,13 +51,13 @@ public class AnalyticsList {
      */
     private void parseDates() {
         
-        if (dateFromString != null && !dateFromString.isBlank()) {
+        if (dateFromString != null && !isBlank(dateFromString)) {
             
             dateFrom = new Date(Long.parseLong(dateFromString) * 1000);
             
         }
         
-        if (dateToString != null && !dateToString.isBlank()) {
+        if (dateToString != null && !isBlank(dateToString)) {
 
             dateTo = new Date(Long.parseLong(dateToString) * 1000);
         }

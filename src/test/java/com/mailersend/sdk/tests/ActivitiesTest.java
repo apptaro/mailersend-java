@@ -1,5 +1,6 @@
 package com.mailersend.sdk.tests;
 
+import static java8.CompatUtil.isBlank;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -171,14 +172,14 @@ public class ActivitiesTest {
             
             Activity activity = activities.activities[0];
             
-            assertTrue(activity.id != null && !activity.id.isBlank());
-            assertTrue(activity.type != null && !activity.type.isBlank());
+            assertTrue(activity.id != null && !isBlank(activity.id));
+            assertTrue(activity.type != null && !isBlank(activity.type));
             
             assertTrue(activity.email != null);
-            assertTrue(activity.email.from != null && !activity.email.from.isBlank());
-            assertTrue(activity.email.subject != null && !activity.email.subject.isBlank());
-            assertTrue(activity.email.id != null && !activity.email.id.isBlank());
-            assertTrue(activity.email.status != null && !activity.email.status.isBlank());
+            assertTrue(activity.email.from != null && !isBlank(activity.email.from));
+            assertTrue(activity.email.subject != null && !isBlank(activity.email.subject));
+            assertTrue(activity.email.id != null && !isBlank(activity.email.id));
+            assertTrue(activity.email.status != null && !isBlank(activity.email.status));
             assertTrue(activity.email.createdAt != null);
             
         } catch (MailerSendException e) {

@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.analytics;
 
+import static java8.CompatUtil.isBlank;
+
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
@@ -72,7 +74,7 @@ public class AnalyticsByDate {
      */
     private void parseDates() {
         
-        if (dateString != null && !dateString.isBlank()) {
+        if (dateString != null && !isBlank(dateString)) {
    
             statDate = new Date(Long.parseLong(dateString) * 1000);
         }

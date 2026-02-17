@@ -9,11 +9,11 @@ package com.mailersend.sdk;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
+import java8.net.http.HttpClient;
+import java8.net.http.HttpRequest;
+import java8.net.http.HttpRequest.BodyPublishers;
+import java8.net.http.HttpResponse;
+import java8.net.http.HttpResponse.BodyHandlers;
 import java.util.NoSuchElementException;
 
 import com.google.gson.Gson;
@@ -70,6 +70,7 @@ public class MailerSendApi {
     public <T extends MailerSendResponse> T getRequest(String endpoint, Class<T> responseClass) throws MailerSendException {
         
         HttpRequest request = HttpRequest.newBuilder(URI.create(this.endpointBase.concat(endpoint)))
+        		.header("User-Agent", "Java-http-client/11.0.21") // avoid error code: 1010
                 .header("Content-type", "application/json")
                 .header("Authorization", "Bearer ".concat(this.apiToken))
                 .GET()
@@ -113,6 +114,7 @@ public class MailerSendApi {
     public <T extends MailerSendResponse> T postRequest(String endpoint, String requestBody, Class<T> responseClass) throws MailerSendException {
        
         HttpRequest request = HttpRequest.newBuilder(URI.create(this.endpointBase.concat(endpoint)))
+        		.header("User-Agent", "Java-http-client/11.0.21") // avoid error code: 1010
                 .header("Content-type", "application/json")
                 .header("Authorization", "Bearer ".concat(this.apiToken))
                 .POST(BodyPublishers.ofString(requestBody))
@@ -146,6 +148,7 @@ public class MailerSendApi {
     public <T extends MailerSendResponse> T deleteRequest(String endpoint, Class<T> responseClass) throws MailerSendException {
         
         HttpRequest request = HttpRequest.newBuilder(URI.create(this.endpointBase.concat(endpoint)))
+        		.header("User-Agent", "Java-http-client/11.0.21") // avoid error code: 1010
                 .header("Content-type", "application/json")
                 .header("Authorization", "Bearer ".concat(this.apiToken))
                 .DELETE()
@@ -180,6 +183,7 @@ public class MailerSendApi {
     public <T extends MailerSendResponse> T deleteRequest(String endpoint, String requestBody, Class<T> responseClass) throws MailerSendException {
         
         HttpRequest request = HttpRequest.newBuilder(URI.create(this.endpointBase.concat(endpoint)))
+        		.header("User-Agent", "Java-http-client/11.0.21") // avoid error code: 1010
                 .header("Content-type", "application/json")
                 .header("Authorization", "Bearer ".concat(this.apiToken))
                 .method("DELETE", BodyPublishers.ofString(requestBody))
@@ -217,6 +221,7 @@ public class MailerSendApi {
     	}
     	
         HttpRequest request = HttpRequest.newBuilder(URI.create(this.endpointBase.concat(endpoint)))
+        		.header("User-Agent", "Java-http-client/11.0.21") // avoid error code: 1010
                 .header("Content-type", "application/json")
                 .header("Authorization", "Bearer ".concat(this.apiToken))
                 .PUT(BodyPublishers.ofString(requestBody))

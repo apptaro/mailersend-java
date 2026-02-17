@@ -7,6 +7,8 @@
  **************************************************/
 package com.mailersend.sdk.templates;
 
+import static java8.CompatUtil.isBlank;
+
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -58,7 +60,7 @@ public class TemplateItem {
         TemporalAccessor ta;
         Instant instant;
         
-        if (createdAtStr != null && !createdAtStr.isBlank()) {
+        if (createdAtStr != null && !isBlank(createdAtStr)) {
             
             ta = DateTimeFormatter.ISO_INSTANT.parse(createdAtStr);
             instant = Instant.from(ta);
