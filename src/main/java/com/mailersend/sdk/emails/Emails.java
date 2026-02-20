@@ -108,7 +108,7 @@ public class Emails {
         api.setToken(apiObjectReference.getToken());
         
         for (Email email : emails) {
-            
+        	email.sendAtStamp = (email.sendAt != null) ? String.valueOf(email.sendAt.getTime() / 1000) : null;
             email.preparePersonalizationForAllRecipients();
             email.prepareSubstitutionsForAllRecipients();
         }
@@ -185,7 +185,7 @@ public class Emails {
                 
                 newStatus.updatedAtString = data.get("updated_at").getAsString();
                 
-                JsonElement validationErrorsEl = data.get("validataion_errors"); 
+                JsonElement validationErrorsEl = data.get("validation_errors"); 
                 
                 if (validationErrorsEl != null) {
                 

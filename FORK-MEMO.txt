@@ -1,0 +1,7 @@
+Based on v1.4.1:
+- Backport to Java 1.8 compatible
+- BUG FIX: emails.bulkSend not sending sendAt correctly:
+  https://github.com/mailersend/mailersend-java/issues/111
+- BUG FIX: emails.bulkSendStatus not returning validationErrors:
+  https://github.com/mailersend/mailersend-java/issues/112
+  
