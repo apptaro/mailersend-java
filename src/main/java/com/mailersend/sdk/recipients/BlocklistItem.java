@@ -48,6 +48,13 @@ public class BlocklistItem {
     
     
     /**
+     * Does all the needed actions after deserialization
+     */
+    public void postDeserialize() {
+        parseDates();
+    }
+    
+    /**
      * Converts the retrieved dates to java.util.Date
      */
     protected void parseDates() {

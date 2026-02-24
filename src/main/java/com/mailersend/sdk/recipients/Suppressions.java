@@ -114,6 +114,9 @@ public class Suppressions {
         
         BlocklistListResponse response = api.getRequest(endpoint, BlocklistListResponse.class);
         
+        // call postDeserialize to parse dates, etc.
+        response.postDeserialize();
+        
         return response;
     }
     
@@ -173,6 +176,9 @@ public class Suppressions {
         
         SuppressionList response = api.getRequest(endpoint, SuppressionList.class);
         
+        // call postDeserialize to parse dates, etc.
+        response.postDeserialize();
+
         return response;
     }
     

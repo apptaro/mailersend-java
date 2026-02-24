@@ -20,4 +20,13 @@ public class SuppressionList extends PaginatedResponse {
 
     @SerializedName("data")
     public SuppressionItem[] items;
+
+	/**
+	 * <p>postDeserialize.</p>
+	 */
+	public void postDeserialize() {
+		for (SuppressionItem item : items) {
+			item.postDeserialize();
+		}
+	}
 }
