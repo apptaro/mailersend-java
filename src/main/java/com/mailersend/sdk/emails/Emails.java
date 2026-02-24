@@ -187,7 +187,7 @@ public class Emails {
                 
                 JsonElement validationErrorsEl = data.get("validation_errors"); 
                 
-                if (validationErrorsEl != null) {
+                if (validationErrorsEl != null && !validationErrorsEl.isJsonNull()) {
                 
                     newStatus.validationErrors = validationErrorsEl.getAsJsonObject();
                 }
