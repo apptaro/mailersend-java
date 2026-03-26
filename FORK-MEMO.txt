@@ -4,4 +4,5 @@ Based on v1.4.1:
   https://github.com/mailersend/mailersend-java/issues/111
 - BUG FIX: emails.bulkSendStatus not returning validationErrors:
   https://github.com/mailersend/mailersend-java/issues/112
-  
+- BUG FIX: SuppressionItem does not have createdAt, and dates are not parsed for suppressionItem.recipient and blocklistItem:
+  https://github.com/mailersend/mailersend-java/issues/113
