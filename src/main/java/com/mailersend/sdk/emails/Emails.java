@@ -108,7 +108,7 @@ public class Emails {
         api.setToken(apiObjectReference.getToken());
         
         for (Email email : emails) {
-        	email.sendAtStamp = (email.sendAt != null) ? String.valueOf(email.sendAt.getTime() / 1000) : null;
+        	email.sendAtStamp = (email.sendAt != null) ? (email.sendAt.getTime() / 1000) : null;
             email.preparePersonalizationForAllRecipients();
             email.prepareSubstitutionsForAllRecipients();
         }

@@ -78,7 +78,7 @@ public class Email {
     protected transient HashMap<String, String> allRecipientsSubstitutions = new HashMap<String, String>();
     
     @SerializedName("send_at")
-    protected String sendAtStamp;
+    protected Long sendAtStamp;
     
     @SerializedName("in_reply_to")
     public String inReplyTo;
@@ -417,7 +417,7 @@ public class Email {
         prepareSubstitutionsForAllRecipients();
         
         if (sendAt != null) {
-        	sendAtStamp = String.valueOf(sendAt.getTime() / 1000);
+        	sendAtStamp = (sendAt.getTime() / 1000);
         }
         
         Gson gson = new GsonBuilder()
